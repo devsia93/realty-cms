@@ -1,5 +1,6 @@
 from django.db import models
 
+from realty.models.contract import Contract
 from realty.models.client import Client
 
 
@@ -20,6 +21,8 @@ class Realty(models.Model):
     owner = models.ForeignKey(Client, blank=True, null=True, on_delete=models.CASCADE, related_name='realties',
                               verbose_name='Владелец')
     status = models.IntegerField(choices=STATUS.CHOICES, default=STATUS.UNKNOWN, blank=True, verbose_name='Статус')
+    contract = models.ForeignKey(Contract, default=None, blank=True, null=True, on_delete=models.SET_NULL,
+                                 related_name='realties', verbose_name='Тип договора')
 
     class Meta:
         verbose_name = 'Недвижимость'
