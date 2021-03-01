@@ -1,11 +1,11 @@
 from django.db import models
 
-from realty.models.contract import Contract
+from realty.custom_decimal_field import CustomDecimalField
 from realty.models.client import Client
 
 
 class Realty(models.Model):
-    class STATUS:
+    class TYPE_DEAL:
         UNKNOWN = 0
         SALE = 1
         RENT = 2
@@ -17,12 +17,12 @@ class Realty(models.Model):
         )
 
     address = models.CharField(max_length=128, verbose_name='Адрес')
-    price = models.DecimalField(max_digits=12, decimal_places=2, verbose_name='Цена')
     owner = models.ForeignKey(Client, blank=True, null=True, on_delete=models.CASCADE, related_name='realties',
                               verbose_name='Владелец')
-    status = models.IntegerField(choices=STATUS.CHOICES, default=STATUS.UNKNOWN, blank=True, verbose_name='Статус')
-    contract = models.ForeignKey(Contract, default=None, blank=True, null=True, on_delete=models.SET_NULL,
-                                 related_name='realties', verbose_name='Тип договора')
+    type_deal = models.IntegerField(choices=TYPE_DEAL.CHOICES, default=TYPE_DEAL.UNKNOWN, blank=True,
+                                    verbose_name='Статус')
+    price = CustomDecimalField(verbose_name='Цена')
+
 
     class Meta:
         verbose_name = 'Недвижимость'
