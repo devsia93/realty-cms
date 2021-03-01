@@ -2,24 +2,11 @@ from django.db import models
 
 
 class Client(models.Model):
-    class STATUS:
-        UNKNOWN = 0
-        SELLER = 1
-        CUSTOMER = 2
-        SELLER_AND_CUSTOMER = 3
-
-        CHOICES = (
-            (UNKNOWN, 'Не определено'),
-            (SELLER, 'Продает'),
-            (CUSTOMER, 'Покупает'),
-            (SELLER_AND_CUSTOMER, 'Продает/покупает'),
-        )
-
     fio = models.CharField(max_length=128, verbose_name='ФИО')
-    age = models.IntegerField(blank=True, null=True, default=None, verbose_name='Возраст')
-    phone = models.CharField(max_length=11, verbose_name='Телефон')
-    # TODO: ForeignKey to district
-    status = models.IntegerField(default=0, choices=STATUS.CHOICES, verbose_name='Статус')
+    date_of_birthday = models.DateField(blank=True, null=True, verbose_name='Дата рождения')
+    phone = models.CharField(max_length=11, blank=True, null=True, verbose_name='Телефон')
+    email = models.EmailField(blank=True, null=True, verbose_name='Почта')
+    comment = models.CharField(max_length=256, verbose_name='Примечание')
 
     class Meta:
         verbose_name = 'Клиент'
