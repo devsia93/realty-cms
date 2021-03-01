@@ -7,3 +7,6 @@ class TypePayment(models.Model):
     class Meta:
         verbose_name = 'Тип оплаты'
         verbose_name_plural = 'Типы оплаты'
+
+    def __str__(self):
+        return self.title

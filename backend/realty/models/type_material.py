@@ -7,3 +7,6 @@ class TypeMaterial(models.Model):
     class Meta:
         verbose_name = 'Тип материала'
         verbose_name_plural = 'Типы материалов'
+
+    def __str__(self):
+        return self.title

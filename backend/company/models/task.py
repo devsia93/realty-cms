@@ -1,5 +1,7 @@
 from django.db import models
 
+from company.models import Worker
+
 
 class Task(models.Model):
     class PRIORITY:
@@ -12,12 +14,17 @@ class Task(models.Model):
             (MIDDLE, 'Средний'),
             (HIGH, 'Высокий'),
         )
-    text = models.TextField(verbose_name='Текст')
+
+    text = models.CharField(max_length=256, verbose_name='Текст')
     date_start = models.DateField(verbose_name='Дата начала')
     date_end = models.DateField(verbose_name='Дата окончания')
     priority = models.IntegerField(choices=PRIORITY.CHOICES, default=PRIORITY.MIDDLE, verbose_name='Приоритет')
+    worker = models.ForeignKey(Worker, blank=True, null=True, on_delete=models.CASCADE, related_name='tasks',
+                               verbose_name='Сотрудник')
 
     class Meta:
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
 
+    def __str__(self):
+        return f'Задача #{self.id}'

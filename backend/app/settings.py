@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'realty',
     'mysite',
+    'company',
 ]
 
 MIDDLEWARE = [
@@ -122,7 +123,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, '..', 'frontend', 'static'),
 ]
-
 MAX_DIGITS_DB = 12
 DECIMAL_PLACES_DB = 2
 

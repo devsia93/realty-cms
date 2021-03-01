@@ -18,3 +18,6 @@ class Child(models.Model):
     class Meta:
         verbose_name = 'Ребенок'
         verbose_name_plural = 'Дети'
+
+    def __str__(self):
+        return self.name
