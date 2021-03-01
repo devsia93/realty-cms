@@ -1,9 +1,7 @@
 from django.db import models
 
 from realty.models import Client
-from realty.models.child import Child
-from realty.models.deal import Deal
-from realty.models.task import Task
+from company.models.child import Child
 
 
 class Worker(models.Model):
@@ -14,10 +12,6 @@ class Worker(models.Model):
                              verbose_name='Дети')
     clients = models.ForeignKey(Client, blank=True, null=True, on_delete=models.SET_NULL, related_name='worker',
                                 verbose_name='Клиенты')
-    deals = models.ForeignKey(Deal, blank=True, null=True, on_delete=models.SET_NULL, related_name='worker',
-                              verbose_name='Сделки')
-    tasks = models.ForeignKey(Task, blank=True, null=True, on_delete=models.CASCADE, related_name='worker',
-                              verbose_name='Задачи')
 
     class Meta:
         verbose_name = 'Сотрудник'

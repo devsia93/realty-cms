@@ -7,3 +7,6 @@ class TypeRealty(models.Model):
     class Meta:
         verbose_name = 'Тип недвижимости'
         verbose_name_plural = 'Типы недвижимости'
+
+    def __str__(self):
+        return self.title
