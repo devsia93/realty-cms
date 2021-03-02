@@ -21,6 +21,7 @@ class Task(models.Model):
     priority = models.IntegerField(choices=PRIORITY.CHOICES, default=PRIORITY.MIDDLE, verbose_name='Приоритет')
     worker = models.ForeignKey(Worker, blank=True, null=True, on_delete=models.CASCADE, related_name='tasks',
                                verbose_name='Сотрудник')
+    status = models.BooleanField(default=False, verbose_name='Статус')
 
     class Meta:
         verbose_name = 'Задача'
