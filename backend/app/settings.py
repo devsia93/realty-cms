@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'realty',
     'mysite',
     'company',
@@ -129,4 +130,4 @@ STATICFILES_DIRS = [
 ]
 MAX_DIGITS_DB = 12
 DECIMAL_PLACES_DB = 2
-
+GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'credentials.json'
