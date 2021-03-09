@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'realty',
     'mysite',
     'company',
@@ -79,9 +80,13 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('POSTGRES_HOST'),
+        'PORT': os.getenv('POSTGRES_PORT'),
+    },
 }
 
 # Password validation
@@ -125,4 +130,4 @@ STATICFILES_DIRS = [
 ]
 MAX_DIGITS_DB = 12
 DECIMAL_PLACES_DB = 2
-
+GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'credentials.json'
