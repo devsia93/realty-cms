@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from django.db.models import Q
 
 from company.models import Worker, Child, Task
@@ -44,7 +45,12 @@ class ClientInline(admin.TabularInline):
 
 
 @admin.register(Worker)
-class WorkerAdmin(admin.ModelAdmin):
-    list_display = ('fio', 'phone', 'date_of_birthday')
-    search_fields = ('fio', 'phone')
+class WorkerAdmin(UserAdmin):
+    list_display = ('get_fio', 'phone', 'date_of_birthday')
+    search_fields = ('get_fio', 'phone')
     inlines = (DealInline, ClientInline, ChildInline)
+    readonly_fields = ('date_joined',)
+
+    @staticmethod
+    def get_fio(obj):
+        return obj.__str__()
