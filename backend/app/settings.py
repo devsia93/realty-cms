@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrap_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, '..', 'frontend', 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,6 +131,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, '..', 'frontend', 'static'),
 ]
+
 MAX_DIGITS_DB = 12
 DECIMAL_PLACES_DB = 2
 GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'credentials.json'
+
+SMS_API_KEY = os.getenv('SMS_API_KEY')
+SMS_EMAIL = os.getenv('SMS_EMAIL')

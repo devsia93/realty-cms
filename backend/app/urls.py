@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from realty.views.sms import SendSMSView
+
 urlpatterns = [
+    path('admin/send_sms/', SendSMSView.as_view(), name='send_sms_url'),
     path('admin/', admin.site.urls),
     path('api/v1/company/', include('company.urls')),
     path('api/v1/realty/', include('realty.urls')),

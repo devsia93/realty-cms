@@ -1,5 +1,7 @@
+from django.urls import path
 from rest_framework import routers
 
+from realty.views.sms import SendSMSView
 from realty.viewsets import ClientViewSet, DealViewSet, RealtyViewSet, TypeLayoutViewSet, TypeMaterialViewSet, \
     TypePaymentViewSet, TypeRealtyViewSet
 

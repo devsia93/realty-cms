@@ -1,0 +1,22 @@
+{% extends "admin/base.html" %}
+
+{% block object-tools %}
+    <div>
+        <h1>Отправка СМС</h1>
+        <form action="{% url 'send_sms_url' %}" method="POST">
+            {% csrf_token %}
+            <ul class="list-group list-group-flush mt-4" style="width: 190rem">
+                <li class="input-group pb-2">
+                    <div class="input-group-prepend">
+                                             <span class="input-group-text" style="font-size: 8pt">Сообщение:</span>
+
+                        <textarea name="message" class="form-control" aria-label="Сообщение" type="text" rows="4"></textarea>
+                    </div>
+                </li>
+                <br>
+                <button name="cancel_button" onclick="window.location.href={{ admin_model_url }}">Назад</button>
+                <button name="send_button" type="submit">Отправить</button>
+            </ul>
+        </form>
+    </div>
+{% endblock %}
