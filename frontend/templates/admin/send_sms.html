@@ -5,12 +5,19 @@
         <h1>Отправка СМС</h1>
         <form action="{% url 'send_sms_url' %}" method="POST">
             {% csrf_token %}
-            <ul class="list-group list-group-flush mt-4" style="width: 190rem">
+            <ul class="list-group list-group-flush mt-4" style="list-style-type:none;">
+                <li>
+                    <span>Выбрано номеров: {{ count_phones }}</span>
+                </li>
+                <li>
+                    <span>Стоимость: {{ price }}</span>
+                </li>
+                <li>
+                    <span>Баланс: {{ balance }}р.</span>
+                </li>
                 <li class="input-group pb-2">
                     <div class="input-group-prepend">
-                                             <span class="input-group-text" style="font-size: 8pt">Сообщение:</span>
-
-                        <textarea name="message" class="form-control" aria-label="Сообщение" type="text" rows="4"></textarea>
+                        <textarea name="message" class="form-control" style="width: 40rem; resize: vertical;" aria-label="Сообщение" type="text" rows="4"></textarea>
                     </div>
                 </li>
                 <br>

@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.views import View
 
 from services.const import PHONES, ADMIN_MODEL_URL
-from services.sms import SMS
+from services.sms import SMSService
 
 
 class SendSMSView(LoginRequiredMixin, View):
@@ -16,7 +16,7 @@ class SendSMSView(LoginRequiredMixin, View):
         if 'send_button' in request.POST:
             message = request.POST['message']
             if message:
-                sms = SMS()
+                sms = SMSService()
                 sms.send_sms(message, phones)
                 if len(phones) > 1:
                     messages.success(request, 'Сообщения отправлены.')
